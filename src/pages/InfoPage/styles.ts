@@ -12,13 +12,12 @@ const styles = StyleSheet.create({
 
   infoContainer: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
   },
 
   developedBy: {
     fontSize: 20,
     marginLeft: 30,
-    color: '#87CCFB',
   },
 
   jmvLogo: {
@@ -29,11 +28,6 @@ const styles = StyleSheet.create({
   phone: {
     alignSelf: 'center',
     fontSize: 30,
-    color: '#87CCFB',
-  },
-
-  privacyPolicy: {
-    backgroundColor: '#87CCFB',
   },
 });
 

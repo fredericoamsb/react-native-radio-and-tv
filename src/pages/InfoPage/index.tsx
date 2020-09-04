@@ -10,16 +10,11 @@ import {
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 import Page from '../../components/Page';
-import DefaultButton from '../../components/DefaultButton';
 import styles from './styles';
 
 import logoImg from '../../assets/images/jmv.png';
 
-interface Props {
-  privacyPolicy: string;
-}
-
-const InfoPage: React.FC<Props> = ({ privacyPolicy }) => {
+const InfoPage: React.FC = () => {
   const theme = useContext(ThemeContext);
 
   function handleDeepLinking(url: string) {
@@ -33,7 +28,9 @@ const InfoPage: React.FC<Props> = ({ privacyPolicy }) => {
         contentContainerStyle={styles.contentScrollView}
       >
         <View style={styles.infoContainer}>
-          <Text style={styles.developedBy}>Desenvoldido por:</Text>
+          <Text style={[styles.developedBy, { color: theme.developedByColor }]}>
+            Desenvoldido por:
+          </Text>
           <TouchableWithoutFeedback
             onPress={() => handleDeepLinking('https://jmvtechnology.com')}
           >
@@ -43,16 +40,10 @@ const InfoPage: React.FC<Props> = ({ privacyPolicy }) => {
           <TouchableWithoutFeedback
             onPress={() => handleDeepLinking('tel:08000374225')}
           >
-            <Text style={styles.phone}>0800 037 4225</Text>
+            <Text style={[styles.phone, { color: theme.developedByColor }]}>
+              0800 037 4225
+            </Text>
           </TouchableWithoutFeedback>
-
-          <DefaultButton
-            onPress={() => handleDeepLinking(privacyPolicy)}
-            text="Política de privacidade"
-            icon="shield-checkmark"
-            color={theme.backgroundColor}
-            style={styles.privacyPolicy}
-          />
         </View>
       </ScrollView>
     </Page>

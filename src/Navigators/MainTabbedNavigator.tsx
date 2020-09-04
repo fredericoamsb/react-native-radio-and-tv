@@ -2,24 +2,12 @@ import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { ThemeContextProvider } from '../contexts/ThemeContext';
+import { ThemeContextProvider, theme } from '../contexts/ThemeContext';
 import HomePage from '../pages/HomePage';
 import SocialPage from '../pages/SocialPage';
 import InfoPage from '../pages/InfoPage';
 import VideoPage from '../pages/VideoPage';
 import appService from '../services/appService';
-
-const theme = {
-  backgroundColor: '#111',
-  videoPageBackgroundColor: '#000',
-  primaryColor: '#2b753e',
-  secondaryColor: '#d52b2a',
-  developedByColor: '#eee',
-  textLightColor: '#fff',
-  textLightOpaqueColor: '#ffffffb3',
-  textDarkColor: '#000',
-  tabsBackgroundColor: '#222',
-};
 
 Navigation.setDefaultOptions({
   topBar: {
@@ -66,7 +54,6 @@ const navigation = {
         whatsapp: result.whatsapp,
       },
       website: 'https://updjs.com.br',
-      privacyPolicy: 'https://updjs.com.br/privacy-policy',
     };
 
     Navigation.registerComponent('HomePage', () => () => (
@@ -83,7 +70,7 @@ const navigation = {
 
     Navigation.registerComponent('InfoPage', () => () => (
       <ThemeContextProvider theme={theme}>
-        <InfoPage privacyPolicy={data.privacyPolicy} />
+        <InfoPage />
       </ThemeContextProvider>
     ));
 
@@ -114,13 +101,17 @@ const navigation = {
                     component: {
                       id: 'HomePage',
                       name: 'HomePage',
+                      options: {
+                        topBar: {
+                          title: {
+                            text: 'UP!DJs',
+                          },
+                        },
+                      },
                     },
                   },
                 ],
                 options: {
-                  topBar: {
-                    visible: false,
-                  },
                   bottomTab: {
                     text: 'Início',
                     icon: HomeIcon,

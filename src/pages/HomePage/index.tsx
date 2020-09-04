@@ -1,6 +1,5 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
-import { View, Alert, ActivityIndicator, Linking, Text } from 'react-native';
-import { WebView, WebViewNavigation } from 'react-native-webview';
+import React, { useContext, useState, useEffect } from 'react';
+import { View, Alert, Text, Image } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 import { Navigation } from 'react-native-navigation';
 import axios from 'axios';
@@ -10,7 +9,8 @@ import Page from '../../components/Page';
 import MediaButton from '../../components/MediaButton';
 import styles from './styles';
 
-import logoImg from '../../assets/images/media.png';
+import logoImg from '../../assets/images/logo.png';
+import mediaImg from '../../assets/images/media.png';
 
 interface Props {
   media: {
@@ -29,14 +29,12 @@ let stopListener: TrackPlayer.EmitterSubscription;
 let stateListener: TrackPlayer.EmitterSubscription;
 let errorListener: TrackPlayer.EmitterSubscription;
 
-const HomePage: React.FC<Props> = ({ media, website }) => {
+const HomePage: React.FC<Props> = ({ media }) => {
   const theme = useContext(ThemeContext);
 
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isLoadingAudio, setIsLoadingAudio] = useState(false);
   const [currentTrack, setCurrentTrack] = useState('');
-
-  const webViewRef = useRef<WebView>(null);
 
   async function setupAudio() {
     const state = await TrackPlayer.getState();
@@ -68,7 +66,7 @@ const HomePage: React.FC<Props> = ({ media, website }) => {
         url: media.audio, // Load media from the network
         title: 'Ao vivo',
         artist: 'UP!DJs',
-        artwork: logoImg, // Load artwork from the app bundle
+        artwork: mediaImg, // Load artwork from the app bundle
       };
       await TrackPlayer.add(track);
     }
@@ -181,17 +179,6 @@ const HomePage: React.FC<Props> = ({ media, website }) => {
     setIsPlayingAudio(false);
   }
 
-  function handleWebViewNavigationStateChange(navigator: WebViewNavigation) {
-    // open only the website pages in webview
-    if (navigator.url.indexOf(website) === 0) {
-      return true;
-    }
-    // open in browser
-    webViewRef.current?.stopLoading();
-    Linking.openURL(navigator.url);
-    return false;
-  }
-
   function addEventListeners() {
     playListener = TrackPlayer.addEventListener('remote-play', playAudio);
     pauseListener = TrackPlayer.addEventListener('remote-pause', pauseAudio);
@@ -234,20 +221,7 @@ const HomePage: React.FC<Props> = ({ media, website }) => {
 
   return (
     <Page>
-      <ActivityIndicator
-        style={styles.spinner}
-        color={theme.textLightColor}
-        size="large"
-      />
-      <WebView
-        ref={webViewRef}
-        style={styles.webView}
-        originWhitelist={['*']}
-        source={{ uri: website }}
-        onNavigationStateChange={handleWebViewNavigationStateChange}
-        allowsInlineMediaPlayback
-        allowsFullscreenVideo
-      />
+      <Image style={styles.logo} source={logoImg} />
       <View style={styles.buttonsContainer}>
         {media.audio ? (
           <MediaButton

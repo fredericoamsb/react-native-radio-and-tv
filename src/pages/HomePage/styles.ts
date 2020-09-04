@@ -1,14 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
-  spinner: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-  },
-
-  webView: {
-    backgroundColor: 'transparent',
+  logo: {
+    alignSelf: 'center',
+    resizeMode: 'contain',
+    maxHeight: '95%',
+    maxWidth: '95%',
   },
 
   buttonsContainer: {

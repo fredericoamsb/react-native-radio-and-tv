@@ -3,13 +3,14 @@ import { ActivityIndicator } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import MainTabbedNavigator from './Navigators/MainTabbedNavigator';
+import { theme } from './contexts/ThemeContext';
 
 const init = () => {
   Navigation.registerComponent('Loader', () => () => (
     <ActivityIndicator
-      color="#fff"
+      color={theme.tabsBackgroundColor}
       size="large"
-      style={{ flex: 1, backgroundColor: '#111' }}
+      style={{ flex: 1, backgroundColor: theme.backgroundColor }}
     />
   ));
 
