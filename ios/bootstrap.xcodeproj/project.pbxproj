@@ -15,6 +15,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* bootstrapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* bootstrapTests.m */; };
+		4A82348B251AA6840066CB80 /* file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A82348A251AA6840066CB80 /* file.swift */; };
 		6EC52265FDF8A2A9D5819326 /* libPods-bootstrap-bootstrapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B371305365A546983154E744 /* libPods-bootstrap-bootstrapTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		EAADBDFF197BD15E9C3C47FD /* libPods-bootstrap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 035FBD9E622613E7BA553A7F /* libPods-bootstrap.a */; };
@@ -52,6 +53,7 @@
 		2D02E47B1E0B4A5D006451C7 /* bootstrap-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bootstrap-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* bootstrap-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "bootstrap-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E41C01C8EDE54076121980 /* Pods-bootstrap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bootstrap.release.xcconfig"; path = "Target Support Files/Pods-bootstrap/Pods-bootstrap.release.xcconfig"; sourceTree = "<group>"; };
+		4A82348A251AA6840066CB80 /* file.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = file.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = bootstrap/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86358A85B056005242ECFD07 /* Pods-bootstrap-bootstrapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bootstrap-bootstrapTests.debug.xcconfig"; path = "Target Support Files/Pods-bootstrap-bootstrapTests/Pods-bootstrap-bootstrapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		87BBCC49EF0B7EADD3207FD7 /* Pods-bootstrap-bootstrapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bootstrap-bootstrapTests.release.xcconfig"; path = "Target Support Files/Pods-bootstrap-bootstrapTests/Pods-bootstrap-bootstrapTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				4A82348A251AA6840066CB80 /* file.swift */,
 			);
 			name = bootstrap;
 			sourceTree = "<group>";
@@ -276,7 +279,8 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = G7247ATZ6Z;
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1200;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -571,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				4A82348B251AA6840066CB80 /* file.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 86358A85B056005242ECFD07 /* Pods-bootstrap-bootstrapTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -635,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87BBCC49EF0B7EADD3207FD7 /* Pods-bootstrap-bootstrapTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = bootstrapTests/Info.plist;
@@ -657,6 +664,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = G7247ATZ6Z;
 				ENABLE_BITCODE = NO;
@@ -668,8 +677,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmvtechnology.bootstrap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmvtechnology.radioupdjs;
 				PRODUCT_NAME = "UP!DJs";
+				PROVISIONING_PROFILE_SPECIFIER = updjs_dev;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,6 +693,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = G7247ATZ6Z;
 				INFOPLIST_FILE = bootstrap/Info.plist;
@@ -693,8 +705,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jmvtechnology.bootstrap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmvtechnology.radioupdjs;
 				PRODUCT_NAME = "UP!DJs";
+				PROVISIONING_PROFILE_SPECIFIER = updjs_dist;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
